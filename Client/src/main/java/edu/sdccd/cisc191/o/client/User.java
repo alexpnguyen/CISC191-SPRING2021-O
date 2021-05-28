@@ -9,6 +9,7 @@ import java.io.*;
 public class User {
     private String userName;
     private String password;
+    private DailyLog dailyLog;
 
     private Socket clientSocket;
     private PrintWriter out;
@@ -18,22 +19,14 @@ public class User {
     public User() {
         userName = "userName";
         password = "password";
+        dailyLog = null;
     }
 
     //Constructor
-    public User(String param_userName, String param_password) {
-        userName = param_userName;
-        password = param_password;
-    }
-
-    //Setter
-    public void setUserName(String param_userName) {
-        userName = param_userName;
-    }
-
-    //Setter
-    public void setPassword(String param_password) {
-        password = param_password;
+    public User(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+        dailyLog = new DailyLog();
     }
 
     //Getter
@@ -41,9 +34,29 @@ public class User {
         return userName;
     }
 
+    //Setter
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
     //Getter
     public String getPassword() {
         return password;
+    }
+
+    //Setter
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    //Getter
+    public DailyLog getDailyLog() {
+        return dailyLog;
+    }
+
+    //Setter
+    public void setDailyLog(DailyLog dailyLog) {
+        this.dailyLog = dailyLog;
     }
 
     /**
