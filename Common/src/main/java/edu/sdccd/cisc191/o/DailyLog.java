@@ -8,6 +8,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.time.LocalDate;
 
 /**
  * This class is used to create an object DailyLog
@@ -16,10 +17,20 @@ import java.util.HashMap;
  *
  */
 public class DailyLog implements Comparator<DailyLog> {
-    int logDate;
+    LocalDate logDate;
     private int dailyCalories = 0;
     HashMap<String, Double> enteredIngredients; //String or Ingredient?
     ArrayList<String> enteredFoods;       //String or Food?
+
+    /*
+    public DailyLog(LocalDate logDate, int dailyCalories, HashMap<String, Double> enteredIngredients, ArrayList<String> enteredFoods) {
+        this.logDate = logDate;
+        this.dailyCalories = dailyCalories;
+        this.enteredIngredients = enteredIngredients;
+        this.enteredFoods = enteredFoods;
+    }
+    */
+
 
     @JsonIgnore
     private static final ObjectMapper objectMapper = new ObjectMapper();
@@ -55,11 +66,17 @@ public class DailyLog implements Comparator<DailyLog> {
         return dailyCalories;
     }
 
+    public LocalDate getLogDate() {
+        return logDate;
+    }
 
-    public void setLogDate(int logDate){
+    public void setLogDate(LocalDate logDate) {
         this.logDate = logDate;
     }
 
+    public void setDailyCalories(int dailyCalories) {
+        this.dailyCalories = dailyCalories;
+    }
 
     @Override
     public String toString() {
